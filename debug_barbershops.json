@@ -1,0 +1,87 @@
+[
+  {
+    "id": "8bf0b9fa-7e6e-49ee-a3e4-e7831dd862b4",
+    "name": "The Gentleman's Cut",
+    "rating": 4.9,
+    "distance": "0.8 km away",
+    "images": [
+      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=400&h=600&fit=crop"
+    ],
+    "phone": "(555) 987-6543",
+    "address": "456 Oak Avenue, Midtown",
+    "hours": "Tue-Sun: 10AM - 7PM",
+    "created_at": "2026-03-12T17:30:44.048834+00:00",
+    "city": "Rijeka",
+    "price_level": 5
+  },
+  {
+    "id": "22f69a03-35f6-4f25-bc30-87d3766cc67c",
+    "name": "Prime Barber Lounge",
+    "rating": 4.9,
+    "distance": "0.5 km away",
+    "images": [
+      "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=600&fit=crop"
+    ],
+    "phone": "(555) 654-3210",
+    "address": "555 Prime Boulevard, Financial District",
+    "hours": "Daily: 8AM - 10PM",
+    "created_at": "2026-03-12T17:30:44.048834+00:00",
+    "city": "Rijeka",
+    "price_level": 3
+  },
+  {
+    "id": "2611403b-48be-40b2-8b9b-654b57e012c1",
+    "name": "FreshCuts Barbershop",
+    "rating": 4.8,
+    "distance": "1.2 km away",
+    "images": [
+      "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=600&fit=crop"
+    ],
+    "phone": "(555) 123-4567",
+    "address": "123 Main Street, Downtown",
+    "hours": "Mon-Sat: 9AM - 8PM",
+    "created_at": "2026-03-12T17:30:44.048834+00:00",
+    "city": "Rijeka",
+    "price_level": 2
+  },
+  {
+    "id": "a01f7485-6d81-44b2-bee4-00260344ad55",
+    "name": "Urban Fade Studio",
+    "rating": 4.7,
+    "distance": "2.1 km away",
+    "images": [
+      "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=400&h=600&fit=crop"
+    ],
+    "phone": "(555) 456-7890",
+    "address": "789 Urban Street, Arts District",
+    "hours": "Mon-Fri: 8AM - 9PM",
+    "created_at": "2026-03-12T17:30:44.048834+00:00",
+    "city": "Rijeka",
+    "price_level": 3
+  },
+  {
+    "id": "10cb3f0b-0bfe-46b9-9ee9-c79f2a03daaa",
+    "name": "Classic Cuts & Shaves",
+    "rating": 4.6,
+    "distance": "1.5 km away",
+    "images": [
+      "https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=400&h=600&fit=crop"
+    ],
+    "phone": "(555) 321-0987",
+    "address": "321 Vintage Lane, Old Town",
+    "hours": "Mon-Sat: 9AM - 6PM",
+    "created_at": "2026-03-12T17:30:44.048834+00:00",
+    "city": "Rijeka",
+    "price_level": 4
+  }
+]
