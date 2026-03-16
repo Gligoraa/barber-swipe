@@ -44,10 +44,6 @@ export default async function Home() {
     return { ...shop, images: fixedImages }
   })
 
-  // DEBUG OUTPUT
-  const fs = require('fs')
-  fs.writeFileSync('debug_barbershops.json', JSON.stringify(formattedBarbershops, null, 2))
-  
   return (
     <main className="min-h-screen bg-background">
       <BarberSwipeApp 
