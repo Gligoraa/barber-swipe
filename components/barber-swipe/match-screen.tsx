@@ -27,10 +27,10 @@ export function MatchScreen({ barbershop, onKeepSwiping }: MatchScreenProps) {
         className="text-center"
       >
         <span className="text-sm font-black uppercase tracking-[0.3em] text-primary/60">Success</span>
-        <h1 className="mt-2 text-5xl font-black italic tracking-tighter text-primary">MARCH!</h1>
+        <h1 className="mt-2 text-5xl font-black italic tracking-tighter text-primary">MATCH!</h1>
         <div className="mt-4 flex justify-center gap-2">
-          <motion.span 
-            animate={{ scale: [1, 1.2, 1] }} 
+          <motion.span
+            animate={{ scale: [1, 1.2, 1] }}
             transition={{ repeat: Infinity, duration: 2 }}
             className="text-2xl"
           >
@@ -63,7 +63,7 @@ export function MatchScreen({ barbershop, onKeepSwiping }: MatchScreenProps) {
               <span className="font-bold text-primary">{barbershop.rating}</span>
             </div>
           </div>
-          
+
           <div className="mt-6 space-y-4">
             <div className="flex items-center gap-4 text-muted-foreground/80">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-colors hover:bg-muted">
