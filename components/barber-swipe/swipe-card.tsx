@@ -95,48 +95,54 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
 
           {/* LIKE stamp */}
           <motion.div
-            className="absolute top-20 left-6 rotate-[-20deg] rounded-lg border-4 border-[#22c55e] px-4 py-2"
-            style={{ opacity: likeOpacity }}
+            className="absolute top-16 left-8 rotate-[-15deg] rounded-xl border-[6px] border-primary px-6 py-2"
+            style={{ opacity: likeOpacity, scale: useTransform(x, [0, 100], [0.8, 1]) }}
           >
-            <span className="text-3xl font-bold tracking-wider text-[#22c55e]">LIKE</span>
+            <span className="text-4xl font-black tracking-tighter text-primary">MATCH</span>
           </motion.div>
 
           {/* NOPE stamp */}
           <motion.div
-            className="absolute top-20 right-6 rotate-[20deg] rounded-lg border-4 border-destructive px-4 py-2"
-            style={{ opacity: nopeOpacity }}
+            className="absolute top-16 right-8 rotate-[15deg] rounded-xl border-[6px] border-destructive px-6 py-2"
+            style={{ opacity: nopeOpacity, scale: useTransform(x, [-100, 0], [1, 0.8]) }}
           >
-            <span className="text-3xl font-bold tracking-wider text-destructive">NOPE</span>
+            <span className="text-4xl font-black tracking-tighter text-destructive">PASS</span>
           </motion.div>
 
           {/* Gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-card to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
         {/* Info section */}
-        <div className="absolute bottom-0 left-0 right-0 h-[25%] bg-card p-5">
-          <h2 className="text-xl font-bold text-foreground">{barbershop.name}</h2>
-          <div className="mt-1 flex items-center gap-2 text-muted-foreground text-sm">
-            <div className="flex items-center gap-1">
-              <Star className="h-4 w-4 fill-[#C9A84C] text-[#C9A84C]" />
-              <span className="font-medium text-foreground">{barbershop.rating}</span>
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/90 to-transparent">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold text-foreground leading-tight">{barbershop.name}</h2>
+          </div>
+          
+          <div className="mt-2 flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-1 px-2 py-0.5 bg-primary/10 rounded-full border border-primary/20">
+              <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+              <span className="font-bold text-primary">{barbershop.rating}</span>
               {barbershop.user_ratings_total != null && (
-                <span className="text-muted-foreground">({barbershop.user_ratings_total})</span>
+                <span className="text-muted-foreground font-normal ml-0.5">({barbershop.user_ratings_total})</span>
               )}
             </div>
+            
             {barbershop.price_level && (
-              <>
-                <span>·</span>
-                <span className="font-medium text-[#22c55e]">
+              <div className="flex items-center px-2 py-0.5 bg-success/10 rounded-full border border-success/20">
+                <span className="text-xs font-bold text-success">
                   {"$".repeat(barbershop.price_level)}
                 </span>
-              </>
+              </div>
             )}
           </div>
+
           {barbershop.address && (
-            <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C9A84C]" />
-              <span className="line-clamp-2">{barbershop.address}</span>
+            <div className="mt-3 flex items-start gap-2 bg-white/5 backdrop-blur-md rounded-xl p-3 border border-white/10">
+              <MapPin className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+              <span className="text-sm text-foreground/80 leading-snug line-clamp-2">
+                {barbershop.address}
+              </span>
             </div>
           )}
         </div>

@@ -18,7 +18,7 @@ export function NavigationBar({ activeTab, onTabChange }: NavigationBarProps) {
   ]
 
   return (
-    <nav className="flex items-center justify-around border-t border-border bg-card py-2">
+    <nav className="sticky bottom-0 z-40 flex items-center justify-around border-t border-white/5 bg-background/60 py-3 backdrop-blur-xl pb-safe-area-inset-bottom">
       {tabs.map((tab) => {
         const Icon = tab.icon
         const isActive = activeTab === tab.id
@@ -28,17 +28,28 @@ export function NavigationBar({ activeTab, onTabChange }: NavigationBarProps) {
             key={tab.id}
             whileTap={{ scale: 0.9 }}
             onClick={() => onTabChange(tab.id)}
-            className={`flex flex-col items-center gap-1 px-6 py-2 transition-colors ${
-              isActive ? "text-[#C9A84C]" : "text-muted-foreground"
+            className={`flex flex-col items-center gap-1 px-6 py-1 transition-all ${
+              isActive ? "text-primary" : "text-muted-foreground/60"
             }`}
             aria-label={tab.label}
           >
-            <Icon
-              className={`h-6 w-6 transition-all ${
-                isActive ? "fill-[#C9A84C]/20" : ""
-              }`}
-            />
-            <span className="text-xs font-medium">{tab.label}</span>
+            <div className="relative">
+              <Icon
+                className={`h-6 w-6 transition-all ${
+                  isActive ? "scale-110" : "scale-100"
+                }`}
+              />
+              {isActive && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute -inset-2 bg-primary/10 rounded-full -z-10"
+                  transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                />
+              )}
+            </div>
+            <span className="text-[10px] font-bold uppercase tracking-widest mt-1">
+              {tab.label}
+            </span>
           </motion.button>
         )
       })}

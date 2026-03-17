@@ -37,10 +37,10 @@ function CitySelect({
 }) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[200px] h-10 bg-card border-border shadow-sm">
+      <SelectTrigger className="w-[160px] h-9 bg-muted/50 border-none rounded-full px-4 text-sm font-medium focus:ring-1 focus:ring-primary/50">
         <SelectValue placeholder="Select City" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="bg-popover/95 backdrop-blur-xl border-border">
         {cities.map((city) => (
           <SelectItem key={city} value={city}>
             {city}
@@ -145,21 +145,20 @@ export function BarberSwipeApp({
   const nextShop = filteredBarbershops.length > 0 ? filteredBarbershops[(currentIndex + 1) % filteredBarbershops.length] : null
 
   return (
-    <div className="relative mx-auto flex h-[100dvh] max-w-[375px] flex-col overflow-hidden bg-background">
+    <div className="relative mx-auto flex h-[100dvh] max-w-[430px] flex-col overflow-hidden bg-background">
       {/* Header */}
-      <header className="flex items-center justify-center border-b border-border bg-card py-4">
-        <h1 className="text-xl font-bold tracking-tight">
+      <header className="sticky top-0 z-40 flex items-center justify-between border-b border-white/5 bg-background/60 px-6 py-3 backdrop-blur-xl">
+        <h1 className="text-lg font-extrabold tracking-tight">
           <span className="text-foreground">Barber</span>
-          <span className="text-[#C9A84C]">Swipe</span>
+          <span className="text-primary italic">Swipe</span>
         </h1>
+        <CitySelect value={selectedCity} onChange={setSelectedCity} cities={uniqueCities} />
       </header>
 
       {/* Main content */}
       {activeTab === "home" && (
         <div className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex items-center justify-center px-4 pt-4">
-            <CitySelect value={selectedCity} onChange={setSelectedCity} cities={uniqueCities} />
-          </div>
+          {/* Removed separate CitySelect div as it's now in header */}
 
           {filteredBarbershops.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
