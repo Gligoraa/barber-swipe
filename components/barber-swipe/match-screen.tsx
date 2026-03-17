@@ -17,7 +17,7 @@ export function MatchScreen({ barbershop, onKeepSwiping }: MatchScreenProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-background/95 px-6 backdrop-blur-xl"
+      className="absolute inset-0 z-50 flex flex-col items-center bg-background/95 px-6 pt-12 pb-8 backdrop-blur-xl overflow-y-auto"
     >
       {/* Celebratory header */}
       <motion.div
@@ -66,17 +66,25 @@ export function MatchScreen({ barbershop, onKeepSwiping }: MatchScreenProps) {
 
           <div className="mt-6 space-y-4">
             <div className="flex items-center gap-4 text-muted-foreground/80">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-colors hover:bg-muted">
+              <div className="flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full bg-muted/50 transition-colors hover:bg-muted">
                 <Phone className="h-5 w-5 text-primary" />
               </div>
-              <span className="font-medium">{barbershop.phone}</span>
+              <span className="font-medium truncate">{barbershop.phone}</span>
             </div>
             <div className="flex items-center gap-4 text-muted-foreground/80">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50">
+              <div className="flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full bg-muted/50">
                 <MapPin className="h-5 w-5 text-primary" />
               </div>
-              <span className="text-sm font-medium leading-relaxed line-clamp-2">{barbershop.address}</span>
+              <span className="text-sm font-medium leading-relaxed">{barbershop.address}</span>
             </div>
+            {barbershop.hours && (
+              <div className="flex items-center gap-4 text-muted-foreground/80">
+                <div className="flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full bg-muted/50">
+                  <Clock className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium leading-relaxed">{barbershop.hours}</span>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>

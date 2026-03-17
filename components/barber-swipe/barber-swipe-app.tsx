@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useMemo } from "react"
 import { AnimatePresence } from "framer-motion"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
@@ -78,10 +78,23 @@ export function BarberSwipeApp({
   const supabase = createClient()
   const router = useRouter()
 
-  const dbCities = Array.from(new Set(barbershops.map(b => b.city).filter(Boolean) as string[]))
-  const uniqueCities = Array.from(new Set(["All", "Rijeka", "Zagreb", "Split", ...dbCities]))
-  const filteredBarbershops = barbershops.filter(shop => selectedCity === "All" || shop.city === selectedCity)
-  const favorites = barbershops.filter(shop => favoriteIds.includes(shop.id))
+  const { uniqueCities, dbCities } = useMemo(() => {
+    const cities = Array.from(new Set(barbershops.map(b => b.city).filter(Boolean) as string[]))
+    return {
+      dbCities: cities,
+      uniqueCities: Array.from(new Set(["All", "Rijeka", "Zagreb", "Split", ...cities]))
+    }
+  }, [barbershops])
+
+  const filteredBarbershops = useMemo(() => 
+    barbershops.filter(shop => selectedCity === "All" || shop.city === selectedCity),
+    [barbershops, selectedCity]
+  )
+
+  const favorites = useMemo(() => 
+    barbershops.filter(shop => favoriteIds.includes(shop.id)),
+    [barbershops, favoriteIds]
+  )
 
   const handleSwipe = useCallback(
     async (direction: "left" | "right") => {
@@ -169,7 +182,7 @@ export function BarberSwipeApp({
           ) : (
             <>
               {/* Card stack */}
-              <div className="relative flex-1 overflow-hidden p-4">
+              <div className="relative flex-1 overflow-hidden p-3 pb-0">
                 <div className="relative h-full w-full">
                   {/* Next card (behind) */}
                   {nextShop && (
@@ -200,7 +213,7 @@ export function BarberSwipeApp({
               </div>
 
               {/* Action buttons */}
-              <div className="pb-4 pt-2">
+              <div className="pb-2 pt-1">
                 <ActionButtons
                   onSwipeLeft={handleSwipeLeft}
                   onSwipeRight={handleSwipeRight}

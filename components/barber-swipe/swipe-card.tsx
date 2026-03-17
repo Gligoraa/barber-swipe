@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion"
 import Image from "next/image"
-import { Star, MapPin } from "lucide-react"
+import { Star, MapPin, Clock } from "lucide-react"
 
 import { Barbershop } from "./barber-swipe-app"
 
@@ -73,8 +73,10 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
                 src={image}
                 alt={`${barbershop.name} - Photo ${index + 1}`}
                 fill
+                sizes="(max-width: 430px) 100vw, 400px"
                 className="object-cover"
-                priority={index === 0}
+                priority={isTop && index === 0}
+                loading={isTop && index === 0 ? "eager" : "lazy"}
               />
             </motion.div>
           ))}
@@ -110,41 +112,55 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
           </motion.div>
 
           {/* Gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
 
         {/* Info section */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/90 to-transparent">
+        <div className="absolute bottom-0 left-0 right-0 p-6 pb-8 bg-gradient-to-t from-background via-background/95 to-transparent">
           <div className="flex items-center justify-between gap-2">
-            <h2 className="text-2xl font-bold text-foreground leading-tight">{barbershop.name}</h2>
+            <h2 className="text-2xl font-black text-foreground leading-tight tracking-tight">{barbershop.name}</h2>
           </div>
           
-          <div className="mt-2 flex items-center gap-2 text-sm">
-            <div className="flex items-center gap-1 px-2 py-0.5 bg-primary/10 rounded-full border border-primary/20">
-              <Star className="h-3.5 w-3.5 fill-primary text-primary" />
-              <span className="font-bold text-primary">{barbershop.rating}</span>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20 backdrop-blur-md">
+              <Star className="h-4 w-4 fill-primary text-primary" />
+              <span className="font-bold text-primary text-sm">{barbershop.rating}</span>
               {barbershop.user_ratings_total != null && (
-                <span className="text-muted-foreground font-normal ml-0.5">({barbershop.user_ratings_total})</span>
+                <span className="text-muted-foreground font-medium text-xs ml-0.5">({barbershop.user_ratings_total})</span>
               )}
             </div>
             
             {barbershop.price_level && (
-              <div className="flex items-center px-2 py-0.5 bg-success/10 rounded-full border border-success/20">
-                <span className="text-xs font-bold text-success">
+              <div className="flex items-center px-2.5 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/20 backdrop-blur-md">
+                <span className="text-xs font-bold text-emerald-500 tracking-widest">
                   {"$".repeat(barbershop.price_level)}
                 </span>
               </div>
             )}
+
+            {barbershop.hours && (
+              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-md">
+                <Clock className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="text-xs font-semibold text-muted-foreground">{barbershop.hours.split(',')[0]}</span>
+              </div>
+            )}
           </div>
 
-          {barbershop.address && (
-            <div className="mt-3 flex items-start gap-2 bg-white/5 backdrop-blur-md rounded-xl p-3 border border-white/10">
-              <MapPin className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <span className="text-sm text-foreground/80 leading-snug line-clamp-2">
-                {barbershop.address}
-              </span>
-            </div>
-          )}
+          <div className="mt-4 space-y-2">
+            {barbershop.address && (
+              <div className="flex items-start gap-2 bg-white/5 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-lg">
+                <div className="mt-0.5 bg-primary/20 p-1.5 rounded-lg">
+                  <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] uppercase font-black tracking-[0.2em] text-primary/60 mb-0.5">Location</span>
+                  <span className="text-xs font-medium text-foreground/90 leading-tight line-clamp-2">
+                    {barbershop.address}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

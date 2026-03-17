@@ -10,7 +10,7 @@ interface ActionButtonsProps {
 
 export function ActionButtons({ onSwipeLeft, onSwipeRight }: ActionButtonsProps) {
   return (
-    <div className="flex items-center justify-center gap-10 py-6">
+    <div className="flex items-center justify-center gap-8 py-2">
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -25,10 +25,10 @@ export function ActionButtons({ onSwipeLeft, onSwipeRight }: ActionButtonsProps)
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={onSwipeRight}
-        className="flex h-20 w-20 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md shadow-[0_8px_32px_rgba(212,175,55,0.2)] transition-all hover:bg-primary/20"
+        className="flex h-18 w-18 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md shadow-[0_8px_32px_rgba(212,175,55,0.2)] transition-all hover:bg-primary/20"
         aria-label="Like"
       >
-        <Check className="h-10 w-10 text-primary" />
+        <Check className="h-9 w-9 text-primary" />
       </motion.button>
     </div>
   )
