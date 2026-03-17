@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Phone, MapPin, Clock } from "lucide-react"
+import { Phone, MapPin, Clock, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Barbershop } from "./barber-swipe-app"
 
@@ -46,7 +46,16 @@ export function MatchScreen({ barbershop, onKeepSwiping }: MatchScreenProps) {
           />
         </div>
         <div className="p-5">
-          <h2 className="text-xl font-bold text-foreground">{barbershop.name}</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold text-foreground">{barbershop.name}</h2>
+            <div className="flex items-center gap-1 text-sm font-medium">
+              <Star className="h-4 w-4 fill-[#C9A84C] text-[#C9A84C]" />
+              <span>{barbershop.rating}</span>
+              {barbershop.user_ratings_total != null && (
+                <span className="text-muted-foreground font-normal">({barbershop.user_ratings_total})</span>
+              )}
+            </div>
+          </div>
           
           <div className="mt-4 space-y-3">
             <div className="flex items-center gap-3 text-muted-foreground">

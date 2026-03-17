@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion"
 import Image from "next/image"
-import { Star } from "lucide-react"
+import { Star, MapPin } from "lucide-react"
 
 import { Barbershop } from "./barber-swipe-app"
 
@@ -120,9 +120,10 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-[#C9A84C] text-[#C9A84C]" />
               <span className="font-medium text-foreground">{barbershop.rating}</span>
+              {barbershop.user_ratings_total != null && (
+                <span className="text-muted-foreground">({barbershop.user_ratings_total})</span>
+              )}
             </div>
-            <span>·</span>
-            <span>{barbershop.distance}</span>
             {barbershop.price_level && (
               <>
                 <span>·</span>
@@ -132,6 +133,12 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
               </>
             )}
           </div>
+          {barbershop.address && (
+            <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C9A84C]" />
+              <span className="line-clamp-2">{barbershop.address}</span>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

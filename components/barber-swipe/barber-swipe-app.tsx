@@ -23,6 +23,7 @@ export interface Barbershop {
   hours: string
   city?: string
   price_level?: number
+  user_ratings_total?: number
 }
 
 function CitySelect({ 

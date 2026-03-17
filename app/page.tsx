@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import { BarberSwipeApp } from "@/components/barber-swipe/barber-swipe-app"
 
+export const dynamic = "force-dynamic"
+
 export default async function Home() {
   const supabase = await createClient()
   
