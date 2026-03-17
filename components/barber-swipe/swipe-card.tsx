@@ -111,12 +111,12 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
             <span className="text-4xl font-black tracking-tighter text-destructive">PASS</span>
           </motion.div>
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          {/* Gradient overlay - taller for better text contrast */}
+          <div className="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
 
-        {/* Info section */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 pb-8 bg-gradient-to-t from-background via-background/95 to-transparent">
+        {/* Info section - increased bottom padding for mobile legibility */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 pb-12 bg-gradient-to-t from-background via-background/95 to-transparent">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-2xl font-black text-foreground leading-tight tracking-tight">{barbershop.name}</h2>
           </div>
@@ -138,12 +138,7 @@ export function SwipeCard({ barbershop, onSwipe, isTop }: SwipeCardProps) {
               </div>
             )}
 
-            {barbershop.hours && (
-              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-md">
-                <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                <span className="text-xs font-semibold text-muted-foreground">{barbershop.hours.split(',')[0]}</span>
-              </div>
-            )}
+
           </div>
 
           <div className="mt-4 space-y-2">
